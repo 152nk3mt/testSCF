@@ -8,6 +8,8 @@ import com.qcloud.scf.runtime.Context;
 import com.qcloud.services.scf.runtime.events.APIGatewayProxyRequestEvent;
 
 import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class NewMainMini {
@@ -20,8 +22,8 @@ public class NewMainMini {
                 .header(Header.HOST, "yaohuo.me")
                 .header(Header.ACCEPT, "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                 .header(Header.ACCEPT_ENCODING, "gzip, deflate")
-                .header(Header.ACCEPT_LANGUAGE, "zh-CN,en-US;q=0.9")
-                .header(Header.USER_AGENT, "Mozilla/5.0 (Linux; U; Android 10; zh-cn; MI 9 Build/QKQ1.190825.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.141 Mobile Safari/537.36 XiaoMi/MiuiBrowser/13.3.2");
+                .header(Header.ACCEPT_LANGUAGE, "zh-CN,en-US;q=0.9");
+        httpRequest.header(Header.USER_AGENT, getRandomUserAgent());
         newUtils.setHttpRequest(httpRequest);
 
         if (!newUtils.validCookie(cookie)) {
@@ -42,5 +44,19 @@ public class NewMainMini {
             HttpUtil.get("https://sc.ftqq.com/" + serverKey + ".send?text=妖火推送&desp=" + descSb.toString());
         }
         return "success";
+    }
+
+    private static String getRandomUserAgent() {
+        List<String> ua = Arrays.asList("Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1464.0 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36",
+                "Mozilla/5.0 (X11; CrOS i686 3912.101.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36",
+                "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:17.0) Gecko/20100101 Firefox/17.0.6",
+                "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1468.0 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+                "Mozilla/5.0 (X11; CrOS i686 3912.101.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36");
+        return ua.get(new Random().nextInt());
     }
 }

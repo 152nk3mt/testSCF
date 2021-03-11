@@ -19,7 +19,7 @@ public class WinMain {
         String keyWords = "手环";
 
         String cookieMy = "_ga=GA1.2.1476050461.1565873644; __gads=ID=1199029fe1b1ab69:T=1584598851:S=ALNI_Ma_s9dOP0YVVJZR3ESr3bD7urp7ig; GUID=c1f9b32621285196; sidyaohuo=052B79C815ECD6E_E65_00322_24890_71001-2-0-0-0-0; OUTFOX_SEARCH_USER_ID_NCOO=181236485.58399308; ASP.NET_SessionId=jdb32t55bdn5ig453x3iui55; ___rl__test__cookies=1608364617250";
-        String serverKeyMy = "SCU91060T5cb87947822b6ba7d2eb10838ed1f8a85e7acf498ba91";
+        String serverKeyMy = "SCT615TDUjXEc5gkHuFocCnJZPqHZnI";
         String keyWordsMy = "哈罗,电费";
         //冯
         String serverKey30762 = "SCU138774T593a86ae32e36d4dfb14f810fbbc3acb5fe467b208f8d";
@@ -40,7 +40,7 @@ public class WinMain {
 
         LocalDateTime minAgo = LocalDateTime.now().plusMinutes(-5);
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd H:mm:ss");
-        DateTimeFormatter dateFormat2 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dateFormat2 = DateTimeFormatter.ofPattern("yyyy/M/d HH:mm:ss");
         for (String url : titleUrl) {
             boolean isAdd = false;
             Document document = Jsoup.parse(NewUtils.getHttpRequest().setUrl("https://yaohuo.me" + url).execute().body());
@@ -175,7 +175,7 @@ public class WinMain {
 
         if (messageMy != 0 || meatList.size() != 0 || keyWordListMy.size() != 0) {
             System.out.println("发送我的消息：");
-            HttpUtil.get("https://sc.ftqq.com/" + serverKeyMy + ".send?text=妖火推送&desp=" + descSbMy1.toString() + descSbMy2.toString() + new Random().nextFloat());
+            HttpUtil.get("https://sctapi.ftqq.com/" + serverKeyMy + ".send?text=妖火推送&desp=" + descSbMy1.toString() + descSbMy2.toString() + new Random().nextFloat());
         }
 
         if (meatList.size() != 0){
@@ -183,4 +183,6 @@ public class WinMain {
         }
         return;
     }
+
+
 }

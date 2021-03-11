@@ -3,10 +3,7 @@ package example;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.http.Header;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpUtil;
-import cn.hutool.http.Method;
+import cn.hutool.http.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -184,7 +181,8 @@ public class NewUtils {
     //获得当前页的帖子标题URL
     public static List<String> getTitleUrl(String bookListUrl) {
         ArrayList<String> titleUrlList = new ArrayList<String>();
-        String bookListContent = HttpUtil.get(bookListUrl);
+        String bookListContent = new HttpRequest(bookListUrl).method(Method.GET).header(Header.USER_AGENT, getRandomAgent()).timeout(3000).execute().body();
+        //String bookListContent = HttpUtil.get(bookListUrl);
         Document document = Jsoup.parse(bookListContent);
         Elements elesLine = document.select("div[class^=line]");
         for (Element element : elesLine) {
