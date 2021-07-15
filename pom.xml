@@ -16,19 +16,26 @@
             <artifactId>scf-java-events</artifactId>
             <version>0.0.2</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-http -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-http</artifactId>
             <version>5.4.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-json</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.13.1</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -72,7 +79,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>example.WinMain</mainClass>
+                            <mainClass>example.NewMain</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

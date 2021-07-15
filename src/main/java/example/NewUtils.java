@@ -100,7 +100,7 @@ public class NewUtils {
             if (string.contains("[标题]")) {
                 bbsMap.put("title", string);
             }
-            if (string.contains("礼金：")) {
+            if (string.contains("礼金：") && !string.contains("余0")) {
                 bbsMap.put("isMeat", "1");
             }
             if (string.contains("每人每日一次派礼：")) {
